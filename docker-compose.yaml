@@ -11,23 +11,6 @@ services:
       POSTGRES_DB: kuncie
     volumes:
        - pg-data:/var/lib/postgresql/data
-    networks:
-    - web
-
-  api:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    depends_on:
-      - postgres
-    image: kuncie:latest
-    ports:
-      - "88:8000"
-    privileged: true
-    volumes:
-      - "./:/usr/app/api"
-    networks:
-    - web
 
   jaeger:
     image: jaegertracing/all-in-one:1.21
@@ -40,13 +23,6 @@ services:
       - "16686:16686"
       - "14268:14268"
       - "9411:9411"
-    networks:
-    - web
 
 volumes:
   pg-data:
-
-networks:
-  web:
-    driver: bridge
-    name: web

@@ -1,0 +1,6 @@
+bin
+vendor
+main_service.go
+kuncie
+coverage.txt
+mocks

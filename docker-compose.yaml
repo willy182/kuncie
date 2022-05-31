@@ -1,0 +1,52 @@
+version: '3.4'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: adalahkuncie
+      POSTGRES_DB: kuncie
+    volumes:
+       - pg-data:/var/lib/postgresql/data
+    networks:
+    - web
+
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    image: kuncie:latest
+    ports:
+      - "88:8000"
+    privileged: true
+    volumes:
+      - "./:/usr/app/api"
+    networks:
+    - web
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.21
+    restart: on-failure
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"
+    networks:
+    - web
+
+volumes:
+  pg-data:
+
+networks:
+  web:
+    driver: bridge
+    name: web

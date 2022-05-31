@@ -1,0 +1,42 @@
+{
+     "GoVersion": "1.16",
+     "Version": "v1.11.5",
+     "LibraryName": "github.com/golangid/candi",
+     "ServiceName": "kuncie",
+     "PackagePrefix": "kuncie",
+     "ProtoSource": "kuncie/api/proto",
+     "Owner": "",
+     "License": "",
+     "Year": 2022,
+     "IsMonorepo": false,
+     "RestHandler": false,
+     "GRPCHandler": false,
+     "GraphQLHandler": true,
+     "KafkaHandler": false,
+     "SchedulerHandler": false,
+     "RedisSubsHandler": false,
+     "TaskQueueHandler": false,
+     "PostgresListenerHandler": false,
+     "RabbitMQHandler": false,
+     "IsWorkerActive": false,
+     "RedisDeps": false,
+     "SQLDeps": true,
+     "MongoDeps": false,
+     "SQLUseGORM": true,
+     "ArangoDeps": false,
+     "SQLDriver": "postgres",
+     "Modules": [
+          {
+               "ModuleName": "items"
+          },
+          {
+               "ModuleName": "orders"
+          },
+          {
+               "ModuleName": "products"
+          },
+          {
+               "ModuleName": "testes"
+          }
+     ]
+}

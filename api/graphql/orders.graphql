@@ -1,0 +1,45 @@
+# 
+
+# OrdersModule Resolver Area
+type OrdersQueryResolver {
+	getAllOrders(filter: FilterListInputResolver): OrdersListResolver!
+	getDetailOrders(id: String!): OrdersResolver!
+}
+
+type OrdersMutationResolver {
+	createOrders(data: OrdersInputResolver!): String!
+	# deleteOrders(id: String!): String!
+}
+
+# type OrdersSubscriptionResolver {
+# 	listenData(): OrdersResolver!
+# }
+
+type OrdersListResolver {
+	meta: MetaResolver!
+	data: [OrdersResolver!]!
+}
+
+type OrdersResolver {
+	id: Int!
+	order_id: String!
+	total: Float!
+	createdAt: String!
+	updatedAt: String!
+}
+
+input OrdersInputResolver {
+	cart: [Items!]!
+}
+
+input Items {
+	sku: String!
+	qty: Int!
+}
+
+# mutation{
+# 	cart: [
+# 		sku: "asaa"
+# 		qty: 1
+# 	]
+# }
